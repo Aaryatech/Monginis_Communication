@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Franchise</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="suggestion">Suggestion</string>
+    <string name="complaint">Complaint</string>
+    <string name="feedback">Feedback</string>
+
+</resources>
