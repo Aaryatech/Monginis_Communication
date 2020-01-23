@@ -10,6 +10,13 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/menu_driver"
+        android:icon="@drawable/ic_driver_info"
+        android:title="Driver Info"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/menu_tray_report"
         android:icon="@drawable/ic_reports"
         android:title="Reports"

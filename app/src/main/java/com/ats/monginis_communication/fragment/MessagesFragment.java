@@ -119,7 +119,6 @@ public class MessagesFragment extends Fragment implements MessagesInterface {
 
     }
 
-
     private void handlePushNotification(Intent intent) {
 
         Log.e("handlePushNotification", "------------------------------------**********");
@@ -137,7 +136,6 @@ public class MessagesFragment extends Fragment implements MessagesInterface {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
 
         Message dbMessage = db.getMessage(messageData.getMsgId());
         if (dbMessage.getMsgId() == 0) {

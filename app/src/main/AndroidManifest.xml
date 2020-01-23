@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -99,10 +100,10 @@
         </service>
 
         <activity
-            android:windowSoftInputMode="stateHidden"
             android:name=".activity.TrayActivity"
             android:parentActivityName=".activity.HomeActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.TrayReportsActivity"
             android:parentActivityName=".activity.TrayActivity"
@@ -111,6 +112,11 @@
             android:name=".activity.InboxActivity"
             android:parentActivityName=".activity.HomeActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.DriverInfoActivity"
+            android:parentActivityName=".activity.TrayActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
     </application>
 
 </manifest>

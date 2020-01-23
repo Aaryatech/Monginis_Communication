@@ -20,6 +20,7 @@ import com.ats.monginis_communication.bean.Info;
 import com.ats.monginis_communication.bean.TrayDetails;
 import com.ats.monginis_communication.common.CommonDialog;
 import com.ats.monginis_communication.constants.Constants;
+import com.ats.monginis_communication.util.PermissionUtil;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
@@ -114,6 +115,10 @@ public class TrayActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         tvSubmit.setOnClickListener(this);
+
+        if (PermissionUtil.checkAndRequestPermissions(this)) {
+
+        }
 
     }
 
@@ -577,6 +582,8 @@ public class TrayActivity extends AppCompatActivity implements View.OnClickListe
         getMenuInflater().inflate(R.menu.profile_menu, menu);
         MenuItem item = menu.findItem(R.id.menu_tray_report);
         item.setVisible(true);
+        MenuItem itemDriver = menu.findItem(R.id.menu_driver);
+        itemDriver.setVisible(true);
         MenuItem itemProfile = menu.findItem(R.id.menu_profile);
         itemProfile.setVisible(false);
         return true;
@@ -588,6 +595,10 @@ public class TrayActivity extends AppCompatActivity implements View.OnClickListe
 
         if (id == R.id.menu_tray_report) {
             startActivity(new Intent(TrayActivity.this, TrayReportsActivity.class));
+        }else  if (id == R.id.menu_driver) {
+            Intent intent=new Intent(TrayActivity.this,DriverInfoActivity.class);
+            intent.putExtra("frId",frId);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

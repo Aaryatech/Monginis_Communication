@@ -2,6 +2,7 @@ package com.ats.monginis_communication.fcm;
 
 import android.app.ActivityManager;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
@@ -9,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -16,6 +18,7 @@ import android.os.Build;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.text.Html;
+import android.util.Log;
 
 import com.ats.monginis_communication.R;
 
@@ -78,17 +81,47 @@ public class MyNotificationManager {
                 );
 
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Log.e("ANDROID","----------------------------------O");
+            NotificationManager notificationManager = (NotificationManager) mCtx.getSystemService(NOTIFICATION_SERVICE);
+            String id = "id_product";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mChannel = new NotificationChannel(id, title, importance);
+            // Configure the notification channel.
+            mChannel.setDescription(message);
+            mChannel.enableLights(true);
+            // Sets the notification light color for notifications posted to this
+            // channel, if the device supports this feature.
+            mChannel.setLightColor(Color.RED);
+            notificationManager.createNotificationChannel(mChannel);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(mCtx)
-                .setAutoCancel(true)
-                .setSmallIcon(R.mipmap.ic_square_logo).setDefaults(Notification.DEFAULT_ALL)
-                .setContentTitle(title)
-                .setContentText(message)
-                .setContentIntent(resultPendingIntent);
-        NotificationManager manager = (NotificationManager) mCtx.getSystemService(NOTIFICATION_SERVICE);
-        manager.notify(0, builder.build());
-        builder.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE);
+            PendingIntent pendingIntent = PendingIntent.getActivity(mCtx, 123, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(mCtx,"id_product")
+                    .setSmallIcon(R.mipmap.ic_launcher_demo) //your app icon
+                    .setBadgeIconType(R.mipmap.ic_launcher_demo) //your app icon
+                    .setChannelId(id)
+                    .setContentTitle(title)
+                    .setAutoCancel(true).setContentIntent(pendingIntent)
+                    .setNumber(1)
+                    .setColor(255)
+                    .setContentText(message)
+                    .setWhen(System.currentTimeMillis());
+            notificationManager.notify(1, notificationBuilder.build());
 
+
+        } else {
+            Log.e("ANDROID","---------------------------------- < O");
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(mCtx)
+                    .setAutoCancel(true)
+                    .setSmallIcon(R.mipmap.ic_square_logo).setDefaults(Notification.DEFAULT_ALL)
+                    .setContentTitle(title)
+                    .setContentText(message)
+                    .setContentIntent(resultPendingIntent);
+            NotificationManager manager = (NotificationManager) mCtx.getSystemService(NOTIFICATION_SERVICE);
+            manager.notify(0, builder.build());
+            builder.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE);
+        }
 
         //Log.e("showSmallNotification", "-------------------------------------");
     }

@@ -2,6 +2,7 @@ package com.ats.monginis_communication.interfaces;
 
 import com.ats.monginis_communication.bean.ComplaintData;
 import com.ats.monginis_communication.bean.ComplaintDetail;
+import com.ats.monginis_communication.bean.DriverInfo;
 import com.ats.monginis_communication.bean.FeedbackData;
 import com.ats.monginis_communication.bean.FeedbackDetail;
 import com.ats.monginis_communication.bean.Info;
@@ -130,5 +131,7 @@ public interface InterfaceApi {
     @POST("traymgt/getTrayMgtDetailList")
     Call<ArrayList<TrayDetails>> getTrayDetailReport(@Query("fromDate") String fromDate, @Query("toDate") String toDate, @Query("frId") int frId, @Query("IsDepositUsed") int IsDepositUsed);
 
+    @POST("traymgt/getDriverInfoByFr")
+    Call<ArrayList<DriverInfo>> getDriverInfoByFr(@Query("frId") int frId);
 
 }

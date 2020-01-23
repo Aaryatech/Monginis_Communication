@@ -357,7 +357,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 //                                }
                                 db.removeAllNotices();
                                 for (int i = 0; i < data.getSchedulerList().size(); i++) {
-                                    db.addNotices(data.getSchedulerList().get(i));
+
+
                                 }
                             }
                         } else {
@@ -718,7 +719,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             });
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
