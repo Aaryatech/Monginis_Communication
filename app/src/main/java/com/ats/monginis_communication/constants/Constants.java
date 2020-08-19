@@ -25,17 +25,16 @@ public class Constants {
 
     public static final String MY_PREF = "COMMUNICATION_PREF";
 
-    public static final String MESSAGE_IMAGE_URL = "http://132.148.151.41:8080/uploads/MSG/";
-    public static final String NOTIFICATION_IMAGE_URL = "http://132.148.151.41:8080/uploads/NOTIFICATION/";
-    public static final String SUGGESTION_IMAGE_URL = "http://132.148.151.41:8080/uploads/SUGGESTION/";
-    public static final String COMPLAINT_IMAGE_URL = "http://132.148.151.41:8080/uploads/COMPLAINT/";
-    public static final String FEEDBACK_IMAGE_URL = "http://132.148.151.41:8080/uploads/FEEDBACK/";
-    public static final String FR_IMAGE_URL = "http://132.148.151.41:8080/uploads/FR/";
+    public static final String MESSAGE_IMAGE_URL = "http://107.180.95.11:8080/uploads/MSG/";
+    public static final String NOTIFICATION_IMAGE_URL = "http://107.180.95.11:8080/uploads/NOTIFICATION/";
+    public static final String SUGGESTION_IMAGE_URL = "http://107.180.95.11:8080/uploads/SUGGESTION/";
+    public static final String COMPLAINT_IMAGE_URL = "http://107.180.95.11:8080/uploads/COMPLAINT/";
+    public static final String FEEDBACK_IMAGE_URL = "http://107.180.95.11:8080/uploads/FEEDBACK/";
+    public static final String FR_IMAGE_URL = "http://107.180.95.11:8080/uploads/FR/";
 
 
-    // public static final String BASE_URL = "http://192.168.2.11:8095/";
-    public static final String BASE_URL = "http://132.148.151.41:8080/webapi/";
-   // public static final String BASE_URL = "http://132.148.151.41:8080/webapi/";
+     //public static final String BASE_URL = "http://192.168.2.4:8096/";
+    public static final String BASE_URL = "http://107.180.95.11:8080/webapi/";
 
     public static OkHttpClient client = new OkHttpClient.Builder()
             .addInterceptor(new Interceptor() {

@@ -82,7 +82,7 @@
             android:fontFamily="@font/open_sans_bold"
             android:gravity="center"
             android:text="Small"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
 
         <TextView
@@ -92,7 +92,7 @@
             android:fontFamily="@font/open_sans_bold"
             android:gravity="center"
             android:text="Big"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
 
         <TextView
@@ -102,7 +102,7 @@
             android:fontFamily="@font/open_sans_bold"
             android:gravity="center"
             android:text="Lids"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
 
         <TextView
@@ -112,7 +112,7 @@
             android:fontFamily="@font/open_sans_bold"
             android:gravity="center"
             android:text="XL"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:visibility="gone" />
     </LinearLayout>

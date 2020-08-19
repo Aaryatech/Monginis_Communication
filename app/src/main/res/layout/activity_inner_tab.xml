@@ -21,7 +21,7 @@
         app:tabIndicatorHeight="5dp"
         app:tabMinWidth="100dp"
         app:tabMode="fixed"
-        app:tabSelectedTextColor="@android:color/white"
+        app:tabSelectedTextColor="@color/colorWhite"
         app:tabTextColor="#65b4ff" />
 
     <!-- View pager to swipe views -->

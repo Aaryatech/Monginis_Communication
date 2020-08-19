@@ -735,7 +735,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         if (id == R.id.menu_profile) {
             userInfoDialog();
         } else if (id == R.id.menu_tray) {
-            startActivity(new Intent(HomeActivity.this, TrayActivity.class));
+            //startActivity(new Intent(HomeActivity.this, TrayActivity.class));
+            startActivity(new Intent(HomeActivity.this, FrRouteActivity.class));
         }
 
         return super.onOptionsItemSelected(item);

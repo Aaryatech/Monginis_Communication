@@ -7,5 +7,8 @@
     <color name="colorActionBar">#01172E</color>
 
     <color name="colorList">#F5F1EE</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="bgBottomNavigation">#1D1046</color>
 
 </resources>

@@ -20,7 +20,7 @@
             android:layout_marginRight="5dp"
             android:fontFamily="@font/awesome"
             android:text="&#xf30d;"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="20sp" />
 
         <TextView
@@ -31,7 +31,7 @@
             android:maxLines="1"
             android:singleLine="true"
             android:text="Notice"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="22sp" />
     </LinearLayout>
 
@@ -49,7 +49,7 @@
             android:layout_marginRight="5dp"
             android:fontFamily="@font/awesome"
             android:text="&#xf30d;"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="20sp" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:maxLines="1"
             android:singleLine="true"
             android:text="Sai Bakers"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>

@@ -5,14 +5,18 @@ import com.ats.monginis_communication.bean.ComplaintDetail;
 import com.ats.monginis_communication.bean.DriverInfo;
 import com.ats.monginis_communication.bean.FeedbackData;
 import com.ats.monginis_communication.bean.FeedbackDetail;
+import com.ats.monginis_communication.bean.FrHomeData;
+import com.ats.monginis_communication.bean.FrTrayReportData;
 import com.ats.monginis_communication.bean.Info;
 import com.ats.monginis_communication.bean.LoginData;
 import com.ats.monginis_communication.bean.MessageData;
 import com.ats.monginis_communication.bean.NoticeData;
 import com.ats.monginis_communication.bean.NotificationData;
+import com.ats.monginis_communication.bean.RouteWiseData;
 import com.ats.monginis_communication.bean.SuggestionData;
 import com.ats.monginis_communication.bean.SuggestionDetail;
 import com.ats.monginis_communication.bean.TrayDetails;
+import com.ats.monginis_communication.bean.TrayMgtDetailInTray;
 
 import org.json.JSONObject;
 
@@ -133,5 +137,38 @@ public interface InterfaceApi {
 
     @POST("traymgt/getDriverInfoByFr")
     Call<ArrayList<DriverInfo>> getDriverInfoByFr(@Query("frId") int frId);
+
+    @POST("traymgt/getFrHomeData")
+    Call<FrHomeData> getFrHomeData(@Query("frId") int frId, @Query("trayDate") String trayDate);
+
+    @POST("traymgt/getTrayMgmtTrayByFrId")
+    Call<ArrayList<RouteWiseData>> getFrData(@Query("routeId") int routeId);
+
+    @POST("traymgt/getFrTrayReportForLastEightDays")
+    Call<ArrayList<FrTrayReportData>> getFrTrayReportData(@Query("frId") int frId, @Query("todaysDate") String todaysDate);
+
+    @POST("traymgt/updateTrayAndUpdateForApp")
+    Call<Info> updateBalTray(@Query("tranDetailId") int tranDetailId,
+                             @Query("balanceBig") int balanceBig,
+                             @Query("balanceSmall") int balanceSmall,
+                             @Query("balanceLead") int balanceLead,
+                             @Query("trayStatus") int trayStatus
+    );
+
+    @POST("traymgt/saveTrayMgmtDeatilInTray")
+    Call<TrayMgtDetailInTray> saveTrayMgtDetailInTray(@Body TrayMgtDetailInTray trayMgtDetailInTray);
+
+    @POST("traymgt/getTrayDetailByTrayDetId")
+    Call<TrayDetails> receiveTray(@Query("tranDetId") int tranDetId);
+
+    @POST("traymgt/getTrayDetailForBalanceByFr")
+    Call<ArrayList<TrayDetails>> getBalTraySum(@Query("frId") int frId,
+                                               @Query("delStatus") int status);
+
+
+    @POST("traymgt/trayDetailByFrIdAndStatus")
+    Call<ArrayList<TrayDetails>> getBalTrayList(@Query("frId") int frId,
+                                                @Query("status") int status);
+
 
 }

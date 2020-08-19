@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_demo"
         android:label="@string/app_name"
@@ -101,7 +102,7 @@
 
         <activity
             android:name=".activity.TrayActivity"
-            android:parentActivityName=".activity.HomeActivity"
+            android:parentActivityName=".activity.FrRouteActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
@@ -117,6 +118,12 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
 
+        <activity android:name=".activity.FrTrayReportEightDaysActivity"></activity>
+
+        <activity android:name=".activity.FrRouteActivity"
+            android:parentActivityName=".activity.HomeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>
