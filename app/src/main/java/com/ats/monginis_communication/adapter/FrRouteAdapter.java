@@ -2,6 +2,7 @@ package com.ats.monginis_communication.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,12 +29,13 @@ public class FrRouteAdapter extends RecyclerView.Adapter<FrRouteAdapter.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvDate, tvVeh, tvRoute, tvTrayStatus;
+        public TextView tvDate, tvVeh, tvRoute, tvTrayStatus,tvMobile;
 
         public MyViewHolder(View view) {
             super(view);
             tvDate = view.findViewById(R.id.tvDate);
             tvVeh = view.findViewById(R.id.tvVeh);
+            tvMobile = view.findViewById(R.id.tvMobile);
             tvRoute = view.findViewById(R.id.tvRoute);
             tvTrayStatus = view.findViewById(R.id.tvTrayStatus);
         }
@@ -57,6 +59,7 @@ public class FrRouteAdapter extends RecyclerView.Adapter<FrRouteAdapter.MyViewHo
 
         holder.tvVeh.setText("" + model.getVehNo() + " " + model.getDriverName());
         holder.tvRoute.setText("" + model.getRouteName());
+        holder.tvMobile.setText("" + model.getVehIntime());
 
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy");
@@ -76,6 +79,15 @@ public class FrRouteAdapter extends RecyclerView.Adapter<FrRouteAdapter.MyViewHo
                 Intent intent = new Intent(context, TrayActivity.class);
                 intent.putExtra("tranId", model.getTranId());
                 context.startActivity(intent);
+            }
+        });
+
+        holder.tvMobile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:"+model.getVehIntime()));
+                context.startActivity(callIntent);
             }
         });
 

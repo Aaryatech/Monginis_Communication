@@ -33,13 +33,15 @@
                 android:textSize="18sp" />
 
 
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/open_sans_bold"
                 android:gravity="center"
-                android:text="@string/str_lids"
+                android:text="@string/str_big"
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp" />
 
@@ -49,7 +51,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/open_sans_bold"
                 android:gravity="center"
-                android:text="@string/str_big"
+                android:text="@string/str_lids"
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp" />
 
@@ -698,8 +700,10 @@
                                         android:text="0"
                                         android:textStyle="bold" />
 
+
+
                                     <TextView
-                                        android:id="@+id/tvOpenLead"
+                                        android:id="@+id/tvOpenBig"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
@@ -709,7 +713,7 @@
                                         android:textStyle="bold" />
 
                                     <TextView
-                                        android:id="@+id/tvOpenBig"
+                                        android:id="@+id/tvOpenLead"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
@@ -770,8 +774,10 @@
                                         android:text="0"
                                         android:textStyle="bold" />
 
+
+
                                     <TextView
-                                        android:id="@+id/tvCBalLead"
+                                        android:id="@+id/tvCBalBig"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
@@ -781,7 +787,7 @@
                                         android:textStyle="bold" />
 
                                     <TextView
-                                        android:id="@+id/tvCBalBig"
+                                        android:id="@+id/tvCBalLead"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
@@ -914,6 +920,8 @@
                 </LinearLayout>
 
 
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -926,11 +934,11 @@
                         android:fontFamily="@font/open_sans_regular"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:text="@string/str_lids_"
+                        android:text="@string/str_big_"
                         android:textColor="@color/colorWhite" />
 
                     <TextView
-                        android:id="@+id/tvBalLarge"
+                        android:id="@+id/tvBalBig"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_semi_bold"
@@ -951,11 +959,11 @@
                         android:fontFamily="@font/open_sans_regular"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:text="@string/str_big_"
+                        android:text="@string/str_lids_"
                         android:textColor="@color/colorWhite" />
 
                     <TextView
-                        android:id="@+id/tvBalBig"
+                        android:id="@+id/tvBalLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_semi_bold"
