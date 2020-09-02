@@ -141,7 +141,7 @@ public interface InterfaceApi {
     @POST("traymgt/getFrHomeData")
     Call<FrHomeData> getFrHomeData(@Query("frId") int frId, @Query("trayDate") String trayDate);
 
-    @POST("traymgt/getTrayMgmtTrayByFrId")
+    @POST("traymgt/getTrayMgmtTrayByFrIdNew")
     Call<ArrayList<RouteWiseData>> getFrData(@Query("routeId") int routeId);
 
     @POST("traymgt/getFrTrayReportForLastEightDays")

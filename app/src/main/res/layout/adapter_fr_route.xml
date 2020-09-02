@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -16,8 +17,8 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/tvMobile"
-        android:layout_width="match_parent"
+        android:id="@+id/tvMobile1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:drawableLeft="@drawable/ic_call"
@@ -29,6 +30,38 @@
         android:singleLine="true"
         android:textColor="@color/colorPrimary"
         android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tvMobile2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:drawableLeft="@drawable/ic_call"
+        android:drawablePadding="15dp"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tvMobile3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:drawableLeft="@drawable/ic_call"
+        android:drawablePadding="15dp"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp" />
+
 
     <TextView
         android:id="@+id/tvDate"

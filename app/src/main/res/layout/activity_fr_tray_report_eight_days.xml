@@ -37,17 +37,7 @@
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
 
-        <TextView
-            android:textSize="16sp"
-            android:id="@+id/tvOpLead"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/str_lids"
-            android:textAlignment="textEnd"
-            android:layout_gravity="end"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold" />
+
 
         <TextView
             android:textSize="16sp"
@@ -56,6 +46,18 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/str_big"
+            android:textAlignment="textEnd"
+            android:layout_gravity="end"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+        <TextView
+            android:textSize="16sp"
+            android:id="@+id/tvOpLead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/str_lids"
             android:textAlignment="textEnd"
             android:layout_gravity="end"
             android:textColor="@color/colorWhite"
