@@ -188,7 +188,7 @@ public class TrayReportAdapter extends RecyclerView.Adapter<TrayReportAdapter.My
                 holder.tvBalTray_XL.setText("" + details.getBalanceExtra());
 
                 if (details.getTrayStatus() == 5) {
-                    holder.llAmount.setVisibility(View.VISIBLE);
+                    holder.llAmount.setVisibility(View.GONE);
                     holder.tvTaxableAmt.setText("Taxable Amt : " + details.getTaxableAmt());
                     holder.tvTaxAmt.setText("Tax Amt : " + details.getTaxAmt());
                     holder.tvTotal.setText("Total : " + details.getGrandTotal());

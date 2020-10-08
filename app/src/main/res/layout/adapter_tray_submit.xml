@@ -86,6 +86,16 @@
                             android:text="0" />
 
                         <TextView
+                            android:id="@+id/tvStatus3_Big1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/open_sans_semi_bold"
+                            android:gravity="center"
+                            android:text="0" />
+
+
+                        <TextView
                             android:id="@+id/tvStatus3_Large1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -94,14 +104,6 @@
                             android:gravity="center"
                             android:text="0" />
 
-                        <TextView
-                            android:id="@+id/tvStatus3_Big1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/open_sans_semi_bold"
-                            android:gravity="center"
-                            android:text="0" />
 
 
 
@@ -143,14 +145,6 @@
                             android:gravity="center"
                             android:text="0" />
 
-                        <TextView
-                            android:id="@+id/tvStatus3_Large2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/open_sans_semi_bold"
-                            android:gravity="center"
-                            android:text="0" />
 
                         <TextView
                             android:id="@+id/tvStatus3_Big2"
@@ -161,6 +155,14 @@
                             android:gravity="center"
                             android:text="0" />
 
+                        <TextView
+                            android:id="@+id/tvStatus3_Large2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/open_sans_semi_bold"
+                            android:gravity="center"
+                            android:text="0" />
 
 
                     </LinearLayout>
@@ -201,14 +203,6 @@
                             android:gravity="center"
                             android:text="0" />
 
-                        <TextView
-                            android:id="@+id/tvStatus3_BalLarge"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/open_sans_semi_bold"
-                            android:gravity="center"
-                            android:text="0" />
 
                         <TextView
                             android:id="@+id/tvStatus3_BalBig"
@@ -219,6 +213,14 @@
                             android:gravity="center"
                             android:text="0" />
 
+                        <TextView
+                            android:id="@+id/tvStatus3_BalLarge"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/open_sans_semi_bold"
+                            android:gravity="center"
+                            android:text="0" />
 
 
                     </LinearLayout>
@@ -272,8 +274,10 @@
                             android:inputType="number"
                             android:singleLine="true" />
 
+
+
                         <EditText
-                            android:id="@+id/edStatus3_Large"
+                            android:id="@+id/edStatus3_Big"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -286,7 +290,7 @@
                             android:singleLine="true" />
 
                         <EditText
-                            android:id="@+id/edStatus3_Big"
+                            android:id="@+id/edStatus3_Large"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -389,13 +393,6 @@
                             android:gravity="center" />
 
 
-                        <TextView
-                            android:id="@+id/tvStatus1_Large"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/open_sans_semi_bold"
-                            android:gravity="center" />
 
                         <TextView
                             android:id="@+id/tvStatus1_Big"
@@ -405,6 +402,13 @@
                             android:fontFamily="@font/open_sans_semi_bold"
                             android:gravity="center" />
 
+                        <TextView
+                            android:id="@+id/tvStatus1_Large"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/open_sans_semi_bold"
+                            android:gravity="center" />
 
 
                     </LinearLayout>

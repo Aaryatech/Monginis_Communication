@@ -880,9 +880,9 @@ public class TrayActivity extends AppCompatActivity implements View.OnClickListe
                         lid = Integer.parseInt(edLids.getText().toString().trim());
                         big = Integer.parseInt(edBig.getText().toString().trim());
 
-                        balSmall = Integer.parseInt(tvBalSmall.getText().toString().trim());
-                        balLid = Integer.parseInt(tvBalLarge.getText().toString().trim());
-                        balBig = Integer.parseInt(tvBalBig.getText().toString().trim());
+//                        balSmall = Integer.parseInt(tvBalSmall.getText().toString().trim());
+//                        balLid = Integer.parseInt(tvBalLarge.getText().toString().trim());
+//                        balBig = Integer.parseInt(tvBalBig.getText().toString().trim());
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -923,6 +923,16 @@ public class TrayActivity extends AppCompatActivity implements View.OnClickListe
                                 } else {
                                     retBig = big;
                                 }
+
+                                Log.e("SMALL","--> "+retSmall);
+                                Log.e("BIG","--> "+retBig);
+                                Log.e("LID","--> "+retLid);
+
+                                Log.e("BAL SMALL","--> "+model.getBalanceSmall());
+                                Log.e("BAL BIG","--> "+model.getBalanceBig());
+                                Log.e("BAL LID","--> "+model.getBalanceLead());
+
+                                Log.e("STATUS","--> "+model.getTrayStatus());
 
                                 if (model.getTrayStatus() > 1 && model.getTrayStatus() <= 3) {
 
