@@ -2,6 +2,8 @@ package com.ats.monginis_communication.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
@@ -18,8 +20,11 @@ import com.ats.monginis_communication.bean.SuggestionDetail;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by MAXADMIN on 30/1/2018.
@@ -64,7 +69,24 @@ public class SuggestionDetailAdapter extends RecyclerView.Adapter<SuggestionDeta
 
         String dateDisplay = "";
         long millis = 0;
+        String dispDate="";
         try {
+
+            SimpleDateFormat sdfTime1 = new SimpleDateFormat("HH:mm:ss");
+            SimpleDateFormat sdfTime2 = new SimpleDateFormat("hh:mm a");
+
+            SimpleDateFormat sdfDate1 = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat sdfDate2 = new SimpleDateFormat("dd MMM yyyy");
+
+            Date d = sdfTime1.parse(suggestion.getTime());
+            Date d1 = sdfDate1.parse(suggestion.getDate());
+            Date d2 = new Date();
+
+            try {
+                    dispDate = sdfDate2.format(d1.getTime()) + " " + sdfTime2.format(d.getTime());
+            } catch (Exception e) {
+            }
+
             String time = suggestion.getTime();
             int h = Integer.parseInt(time.substring(0, 2));
             int m = Integer.parseInt(time.substring(3, 5));
@@ -119,17 +141,18 @@ public class SuggestionDetailAdapter extends RecyclerView.Adapter<SuggestionDeta
             holder.llParent.setGravity(Gravity.RIGHT);
             holder.llParent.setPadding(45, 0, 0, 0);
             holder.llOther.setBackgroundColor(Color.parseColor("#cee6ef"));
-            holder.tvOther.setText(suggestion.getMessage());
-            holder.tvOtherTime.setText(dateDisplay);
-            holder.tvName.setText(suggestion.getFrName());
+           // holder.tvName.setVisibility(View.GONE);
         } else {
             holder.llParent.setGravity(Gravity.LEFT);
             holder.llParent.setPadding(0, 0, 45, 0);
             holder.llOther.setBackgroundColor(Color.parseColor("#e9e9e9"));
-            holder.tvOther.setText(suggestion.getMessage());
-            holder.tvOtherTime.setText(dateDisplay);
-            holder.tvName.setText(suggestion.getFrName());
+            //holder.tvName.setVisibility(View.VISIBLE);
         }
+
+        holder.tvOther.setText(suggestion.getMessage());
+        holder.tvOtherTime.setText(dispDate);
+        //Log.e("NAME - ","--------------> "+suggestion.getFrName());
+        holder.tvName.setText(""+suggestion.getFrName());
 
     }
 
@@ -137,5 +160,6 @@ public class SuggestionDetailAdapter extends RecyclerView.Adapter<SuggestionDeta
     public int getItemCount() {
         return suggestionDetailList.size();
     }
+
 
 }

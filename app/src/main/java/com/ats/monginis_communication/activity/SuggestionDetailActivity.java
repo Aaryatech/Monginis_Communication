@@ -5,11 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -39,6 +44,8 @@ import com.ats.monginis_communication.db.DatabaseHandler;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -69,6 +76,7 @@ public class SuggestionDetailActivity extends AppCompatActivity implements View.
     private BroadcastReceiver mRegistrationBroadcastReceiver;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +88,7 @@ public class SuggestionDetailActivity extends AppCompatActivity implements View.
         ivHeaderImage = findViewById(R.id.ivSuggestionDetail_header);
 
         llSend.setOnClickListener(this);
+        ivHeaderImage.setOnClickListener(this);
 
         db = new DatabaseHandler(this);
 
@@ -118,8 +127,9 @@ public class SuggestionDetailActivity extends AppCompatActivity implements View.
         CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(data.getTitle());
         collapsingToolbar.setCollapsedTitleTextColor(Color.parseColor("#ffffff"));
+        collapsingToolbar.setExpandedTitleTextAppearance(R.style.CollapsedAppBar);
 
-        String image = Constants.SUGGESTION_IMAGE_URL + data.getPhoto();
+        final String image = Constants.SUGGESTION_IMAGE_URL + data.getPhoto();
         try {
             Picasso.with(this)
                     .load(image)
@@ -128,6 +138,15 @@ public class SuggestionDetailActivity extends AppCompatActivity implements View.
                     .into(ivHeaderImage);
         } catch (Exception e) {
         }
+
+        ivHeaderImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SuggestionDetailActivity.this, ImageZoomActivity.class);
+                intent.putExtra("image", image);
+                startActivity(intent);
+            }
+        });
 
 
         suggestionDetailArrayList = db.getAllSQLiteSuggestionDetails(suggestionId);
@@ -157,6 +176,15 @@ public class SuggestionDetailActivity extends AppCompatActivity implements View.
 //            if (adapter.getItemCount() > 0)
 //                rvSuggestionDetail.scrollToPosition(adapter.getItemCount() - 1);
 //        }
+
+        rvSuggestionDetail.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
+                try{
+                    rvSuggestionDetail.smoothScrollToPosition(adapter.getItemCount()-1);
+                }catch (Exception e){}
+            }
+        });
 
     }
 
@@ -211,6 +239,9 @@ public class SuggestionDetailActivity extends AppCompatActivity implements View.
 
             }
         }
+
+
+
     }
 
     @Override
@@ -249,6 +280,8 @@ public class SuggestionDetailActivity extends AppCompatActivity implements View.
             }
 
 
+        }else if(view.getId()==R.id.ivSuggestionDetail_header){
+            //Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -287,6 +320,9 @@ public class SuggestionDetailActivity extends AppCompatActivity implements View.
             });
         }
     }
+
+
+
 
 
 }

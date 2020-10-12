@@ -116,8 +116,9 @@ public class ComplaintDetailActivity extends AppCompatActivity implements View.O
         CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar_ComplaintDetail);
         collapsingToolbar.setTitle(data.getTitle());
         collapsingToolbar.setCollapsedTitleTextColor(Color.parseColor("#ffffff"));
+        collapsingToolbar.setExpandedTitleTextAppearance(R.style.CollapsedAppBar);
 
-        String image = Constants.COMPLAINT_IMAGE_URL + data.getPhoto1();
+        final String image = Constants.COMPLAINT_IMAGE_URL + data.getPhoto1();
         try {
             Picasso.with(this)
                     .load(image)
@@ -126,6 +127,15 @@ public class ComplaintDetailActivity extends AppCompatActivity implements View.O
                     .into(ivHeaderImage);
         } catch (Exception e) {
         }
+
+        ivHeaderImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ComplaintDetailActivity.this, ImageZoomActivity.class);
+                intent.putExtra("image", image);
+                startActivity(intent);
+            }
+        });
 
 
         complaintDetailArrayList = db.getAllSQLiteComplaintDetails(complaintId);
@@ -154,6 +164,17 @@ public class ComplaintDetailActivity extends AppCompatActivity implements View.O
             if (adapter.getItemCount() > 0)
                 rvComplaintDetail.scrollToPosition(adapter.getItemCount() - 1);
         }
+
+        rvComplaintDetail.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
+                try{
+                    rvComplaintDetail.smoothScrollToPosition(adapter.getItemCount()-1);
+                }catch (Exception e){}
+            }
+        });
+
+
 
     }
 
@@ -206,6 +227,9 @@ public class ComplaintDetailActivity extends AppCompatActivity implements View.O
                 }
             }
         }
+
+
+
     }
 
     @Override

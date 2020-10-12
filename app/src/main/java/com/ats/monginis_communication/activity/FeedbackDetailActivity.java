@@ -115,8 +115,9 @@ public class FeedbackDetailActivity extends AppCompatActivity implements View.On
         CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar_FeedbackDetail);
         collapsingToolbar.setTitle(data.getTitle());
         collapsingToolbar.setCollapsedTitleTextColor(Color.parseColor("#ffffff"));
+        collapsingToolbar.setExpandedTitleTextAppearance(R.style.CollapsedAppBar);
 
-        String image = Constants.FEEDBACK_IMAGE_URL + data.getPhoto();
+        final String image = Constants.FEEDBACK_IMAGE_URL + data.getPhoto();
         try {
             Picasso.with(this)
                     .load(image)
@@ -125,6 +126,15 @@ public class FeedbackDetailActivity extends AppCompatActivity implements View.On
                     .into(ivHeaderImage);
         } catch (Exception e) {
         }
+
+        ivHeaderImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FeedbackDetailActivity.this, ImageZoomActivity.class);
+                intent.putExtra("image", image);
+                startActivity(intent);
+            }
+        });
 
 
         feedbackDetailArrayList = db.getAllSQLiteFeedbackDetails(feedbackId);
@@ -153,6 +163,15 @@ public class FeedbackDetailActivity extends AppCompatActivity implements View.On
             if (adapter.getItemCount() > 0)
                 rvFeedbackDetail.scrollToPosition(adapter.getItemCount() - 1);
         }
+
+        rvFeedbackDetail.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
+                try{
+                    rvFeedbackDetail.smoothScrollToPosition(adapter.getItemCount()-1);
+                }catch (Exception e){}
+            }
+        });
 
     }
 

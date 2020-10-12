@@ -1082,12 +1082,12 @@ public class TrayActivity extends AppCompatActivity implements View.OnClickListe
                                 commonDialog.dismiss();
                                 Toast.makeText(TrayActivity.this, "Success", Toast.LENGTH_SHORT).show();
 
-                                if (flag == 1) {
+                               // if (flag == 1) {
                                     Intent intent = new Intent(TrayActivity.this, TrayActivity.class);
                                     intent.putExtra("tranId", tranId);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
-                                }
+                               // }
 
 
                             }

@@ -4,9 +4,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="suggestion">Suggestion</string>
-    <string name="complaint">Complaint</string>
-    <string name="feedback">Feedback</string>
+    <string name="suggestion">DAILY ISSUES</string>
+    <string name="complaint">CUSTOMER COMPLAINTS ONLY</string>
+    <string name="feedback">FEEDBACK</string>
 
     <string name="str_small">Small</string>
     <string name="str_big">Big</string>

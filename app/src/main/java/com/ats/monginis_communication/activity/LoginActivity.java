@@ -100,11 +100,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 editor.apply();
                                 editor.apply();
 
-                                String token = SharedPrefManager.getmInstance(LoginActivity.this).getDeviceToken();
-                                Log.e("Token : ", "---------" + token);
-                                if (data.getLoginInfo().getAccessRight() == 1) {
-                                    updateUserToken(data.getFranchisee().getFrId(), token);
+                                if(data.getLoginInfo().getAccessRight()==1){
+                                    String token = SharedPrefManager.getmInstance(LoginActivity.this).getDeviceToken();
+                                    Log.e("Token : ", "---------" + token);
+                                    if (data.getLoginInfo().getAccessRight() == 1) {
+                                        updateUserToken(data.getFranchisee().getFrId(), token);
+                                    }
+                                }else{
+                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                 }
+
 
                             }
                         } else {
