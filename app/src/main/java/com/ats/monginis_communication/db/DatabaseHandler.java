@@ -939,7 +939,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         int count = 0;
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_SUGGESTION_DETAILS + " WHERE " + SD_READ + "=0", null);
+        //Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_SUGGESTION_DETAILS + " WHERE " + SD_READ + "=0", null);
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_SUGGESTION_DETAILS + " as sd,"+ TABLE_SUGGESTION + " as sh WHERE sd." + SD_READ + "=0 AND sd."+SD_SG_ID+"=sh."+SG_ID, null);
         if (cursor != null && cursor.moveToFirst()) {
             count = cursor.getInt(0);
             cursor.close();
@@ -1159,7 +1160,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         int count = 0;
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_COMPLAINT_DETAILS + " WHERE " + CD_READ + "=0", null);
+        //Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_COMPLAINT_DETAILS + " WHERE " + CD_READ + "=0", null);
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_COMPLAINT_DETAILS + " as cd,"+TABLE_COMPLAINT+" as ch WHERE cd." + CD_READ + "=0 AND cd."+CD_C_ID+"=ch."+C_ID, null);
         if (cursor != null && cursor.moveToFirst()) {
             count = cursor.getInt(0);
             cursor.close();
@@ -1374,7 +1376,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         int count = 0;
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_FEEDBACK_DETAILS + " WHERE " + FD_READ + "=0", null);
+        //Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_FEEDBACK_DETAILS + " WHERE " + FD_READ + "=0", null);
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_FEEDBACK_DETAILS + " as fd,"+TABLE_FEEDBACK+" as fh WHERE fd." + FD_READ + "=0 AND fd."+FD_F_ID+"=fh."+F_ID, null);
         if (cursor != null && cursor.moveToFirst()) {
             count = cursor.getInt(0);
             cursor.close();

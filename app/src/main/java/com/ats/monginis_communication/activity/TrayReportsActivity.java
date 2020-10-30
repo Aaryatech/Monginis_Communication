@@ -17,9 +17,11 @@ import android.widget.Toast;
 
 import com.ats.monginis_communication.R;
 import com.ats.monginis_communication.adapter.FeedbackAdapter;
+import com.ats.monginis_communication.adapter.NewTrayReportAdapter;
 import com.ats.monginis_communication.adapter.TrayReportAdapter;
 import com.ats.monginis_communication.bean.Franchisee;
 import com.ats.monginis_communication.bean.Info;
+import com.ats.monginis_communication.bean.NewTrayReport;
 import com.ats.monginis_communication.bean.TrayDetails;
 import com.ats.monginis_communication.common.CommonDialog;
 import com.ats.monginis_communication.constants.Constants;
@@ -69,7 +71,8 @@ public class TrayReportsActivity extends AppCompatActivity implements View.OnCli
                 edFromDate.setText(todaysDate);
                 edToDate.setText(todaysDate);
 
-                getTrayReport(todaysDate, todaysDate, frId);
+                //getTrayReport(todaysDate, todaysDate, frId);
+                getTrayReportNew(todaysDate, todaysDate, frId);
 
             }
         } catch (Exception e) {
@@ -126,6 +129,53 @@ public class TrayReportsActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+
+
+    public void getTrayReportNew(String fromDate, String toDate, int frId) {
+        if (Constants.isOnline(this)) {
+            final CommonDialog commonDialog = new CommonDialog(this, "Loading", "Please Wait...");
+            commonDialog.show();
+
+            Call<ArrayList<NewTrayReport>> infoCall = Constants.myInterface.getFrWiseTrayReportNew(fromDate, toDate, frId, 2);
+            infoCall.enqueue(new Callback<ArrayList<NewTrayReport>>() {
+                @Override
+                public void onResponse(Call<ArrayList<NewTrayReport>> call, Response<ArrayList<NewTrayReport>> response) {
+                    try {
+                        if (response.body() != null) {
+                            ArrayList<NewTrayReport> data = response.body();
+                            commonDialog.dismiss();
+                            Log.e("TRAY Report : ", "Info Date---------------------------" + data);
+
+                            NewTrayReportAdapter adapterNew = new NewTrayReportAdapter(data,TrayReportsActivity.this);
+                            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(TrayReportsActivity.this);
+                            rvReportList.setLayoutManager(mLayoutManager);
+                            rvReportList.setItemAnimator(new DefaultItemAnimator());
+                            rvReportList.setAdapter(adapterNew);
+
+                        } else {
+                            commonDialog.dismiss();
+                            Log.e("TRAY Report : ", " NULL");
+                        }
+                    } catch (Exception e) {
+                        commonDialog.dismiss();
+                        Log.e("TRAY Report : ", " Exception : " + e.getMessage());
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ArrayList<NewTrayReport>> call, Throwable t) {
+                    commonDialog.dismiss();
+                    Log.e("TRAY Report : ", " onFailure : " + t.getMessage());
+                    t.printStackTrace();
+
+                }
+            });
+        } else {
+            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.edTrayReport_FromDate) {
@@ -164,7 +214,8 @@ public class TrayReportsActivity extends AppCompatActivity implements View.OnCli
             String fromDt = edFromDate.getText().toString();
             String toDt = edToDate.getText().toString();
 
-            getTrayReport(fromDt, toDt, frId);
+            //getTrayReport(fromDt, toDt, frId);
+            getTrayReportNew(fromDt, toDt, frId);
 
         }
     }

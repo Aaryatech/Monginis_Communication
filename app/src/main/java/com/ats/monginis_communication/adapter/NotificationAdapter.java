@@ -1,6 +1,7 @@
 package com.ats.monginis_communication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ats.monginis_communication.R;
+import com.ats.monginis_communication.activity.ImageZoomActivity;
 import com.ats.monginis_communication.bean.NotificationData;
 import com.ats.monginis_communication.bean.SchedulerList;
 import com.ats.monginis_communication.constants.Constants;
@@ -68,15 +70,34 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         Log.e("Notification : ", "   DATE : -------" + notification.getDate());
         holder.date.setText("" + notification.getDate());
 
-        String image = Constants.NOTIFICATION_IMAGE_URL + notification.getPhoto();
+       // final String image = Constants.NOTIFICATION_IMAGE_URL + notification.getPhoto();
+
+        String image=Constants.NOTIFICATION_IMAGE_URL + notification.getPhoto();
+        if (notification.getSubject().equalsIgnoreCase("New cake added to album")){
+            image = Constants.ALBUM_IMAGE_URL + notification.getPhoto();
+        }else{
+            image = Constants.NOTIFICATION_IMAGE_URL + notification.getPhoto();
+        }
+
         try {
             Picasso.with(context)
                     .load(image)
                     .placeholder(R.drawable.logo)
                     .error(R.drawable.logo)
+                    .resize(150,150)
                     .into(holder.ivImage);
         } catch (Exception e) {
         }
+
+        final String finalImage = image;
+        holder.ivImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ImageZoomActivity.class);
+                intent.putExtra("image", finalImage);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

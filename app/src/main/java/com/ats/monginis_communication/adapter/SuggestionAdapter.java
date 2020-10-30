@@ -32,6 +32,7 @@ import com.ats.monginis_communication.fragment.SuggestionFragment;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -88,7 +89,17 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.My
         final SuggestionData suggestion = suggestionList.get(position);
         holder.title.setText(suggestion.getTitle());
         holder.desc.setText(suggestion.getDescription());
-        holder.date.setText(suggestion.getDate());
+
+        String time=suggestion.getTime();
+        try{
+            SimpleDateFormat sdf=new SimpleDateFormat("hh:mm a");
+            SimpleDateFormat sdf1=new SimpleDateFormat("HH:mm:ss");
+
+            time=sdf.format(sdf1.parse(suggestion.getTime()));
+
+        }catch (Exception e){}
+
+        holder.date.setText(suggestion.getDate()+" "+time);
 
         db = new DatabaseHandler(context);
 

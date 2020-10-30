@@ -86,8 +86,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             String frName = "";
             Log.e("LENGTH", "----------------------------" + tempArray.length);
             if (tempArray.length > 0) {
-                title = tempArray[0];
-                // frName = tempArray[1];
+
+                try{
+                    title = tempArray[0];
+                    frName = tempArray[1];
+                }catch(Exception e){
+                    title = tempTitle;
+                }
             } else {
                 title = tempTitle;
             }
@@ -318,6 +323,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
                 Gson gson = new Gson();
                 SuggestionDetail suggestionDetail = gson.fromJson(message, SuggestionDetail.class);
+                suggestionDetail.setFrName(frName);
                 Log.e("SUGGESTION DETAIL : ", "----------------------" + suggestionDetail);
 
                 if (mNotificationManager.isAppIsInBackground(getApplicationContext())) {
@@ -348,6 +354,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
                 Gson gson = new Gson();
                 ComplaintDetail complaintDetail = gson.fromJson(message, ComplaintDetail.class);
+                complaintDetail.setFrName(frName);
                 Log.e("COMPLAINT DETAIL : ", "----------------------" + complaintDetail);
 
                 if (mNotificationManager.isAppIsInBackground(getApplicationContext())) {
@@ -378,6 +385,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
                 Gson gson = new Gson();
                 FeedbackDetail feedbackDetail = gson.fromJson(message, FeedbackDetail.class);
+                feedbackDetail.setFrName(frName);
                 Log.e("FEEDBACK DETAIL : ", "----------------------" + feedbackDetail);
 
                 if (mNotificationManager.isAppIsInBackground(getApplicationContext())) {

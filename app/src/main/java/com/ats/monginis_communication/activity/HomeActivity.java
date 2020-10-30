@@ -835,6 +835,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     public void onClick(View view) {
                         db.removeAll();
 
+                        Log.e("LAST ID -"," SUGGESTION : "+db.getSuggestionLastId());
+                        Log.e("LAST ID -"," SUGGESTION DETAIL : "+db.getSuggestionDetailLastId());
+
+
                         getAllMessages(1);
                         getAllNotices(1);
                         getAllNotificationsById(db.getNotificationLastId(), 1);

@@ -10,6 +10,7 @@ import com.ats.monginis_communication.bean.FrTrayReportData;
 import com.ats.monginis_communication.bean.Info;
 import com.ats.monginis_communication.bean.LoginData;
 import com.ats.monginis_communication.bean.MessageData;
+import com.ats.monginis_communication.bean.NewTrayReport;
 import com.ats.monginis_communication.bean.NoticeData;
 import com.ats.monginis_communication.bean.NotificationData;
 import com.ats.monginis_communication.bean.RouteWiseData;
@@ -169,6 +170,9 @@ public interface InterfaceApi {
     @POST("traymgt/trayDetailByFrIdAndStatus")
     Call<ArrayList<TrayDetails>> getBalTrayList(@Query("frId") int frId,
                                                 @Query("status") int status);
+
+    @POST("traymgt/getFrWiseTrayReportNew")
+    Call<ArrayList<NewTrayReport>> getFrWiseTrayReportNew(@Query("fromDate") String fromDate, @Query("toDate") String toDate, @Query("frId") int frId, @Query("IsDepositUsed") int IsDepositUsed);
 
 
 }

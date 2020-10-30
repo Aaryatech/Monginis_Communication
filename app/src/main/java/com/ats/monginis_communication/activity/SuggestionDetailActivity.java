@@ -252,18 +252,18 @@ public class SuggestionDetailActivity extends AppCompatActivity implements View.
             if (msg.isEmpty()) {
             } else {
 
-                SuggestionDetail suggestionDetail = new SuggestionDetail(0, suggestionId, msg, 0, userId, userName, "", "2018-1-1", "00:00:00", 1);
-                SuggestionDetail suggestionDetailDB = new SuggestionDetail(0, suggestionId, msg, 0, userId, userName, "", "2018-1-1", "00:00:00", 1);
-
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
                 SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
                 String date = sdf.format(Calendar.getInstance().getTimeInMillis());
+                String dateDB = sdf1.format(Calendar.getInstance().getTimeInMillis());
                 String time = sdfTime.format(Calendar.getInstance().getTimeInMillis());
+
+                SuggestionDetail suggestionDetail = new SuggestionDetail(0, suggestionId, msg, 0, userId, userName, "", date, time, 1);
+                SuggestionDetail suggestionDetailDB = new SuggestionDetail(0, suggestionId, msg, 0, userId, userName, "", dateDB, time, 1);
 
                 Log.e("SUGG DETAIL", " LAST ID : " + db.getSuggestionDetailLastId());
                 int lastId = db.getSuggestionDetailLastId() + 1;
-                suggestionDetail.setTime(time);
-                suggestionDetail.setDate(date);
                 suggestionDetail.setSuggestionDetailId(lastId);
 
                 db.addSuggestionDetails(suggestionDetail);

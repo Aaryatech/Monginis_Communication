@@ -1254,11 +1254,11 @@ public class TrayActivity extends AppCompatActivity implements View.OnClickListe
                                 ArrayList<ReturnTrayList> retList = new ArrayList<>();
                                 for (int i = 0; i < frHomeData.getReturnTrayList().size(); i++) {
 
-                                    if (tranId == frHomeData.getReturnTrayList().get(i).getHeaderId()) {
+                                   // if (tranId == frHomeData.getReturnTrayList().get(i).getHeaderId()) {
                                         //MenuItem item=get
-                                        itemReturn.setVisible(false);
+                                    //    itemReturn.setVisible(false);
                                         // break;
-                                    }
+                                   // }
 
                                     retList.add(frHomeData.getReturnTrayList().get(i));
 

@@ -234,14 +234,16 @@ public class FeedbackDetailActivity extends AppCompatActivity implements View.On
             if (msg.isEmpty()) {
             } else {
 
-                FeedbackDetail feedbackDetail = new FeedbackDetail(0, feedbackId, msg, 0, userId, userName, "", "2018-01-01", "00:00:00", 1);
-                FeedbackDetail feedbackDetailDB = new FeedbackDetail(0, feedbackId, msg, 0, userId, userName, "", "2018-01-01", "00:00:00", 1);
-
-
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
+
                 String date = sdf.format(Calendar.getInstance().getTimeInMillis());
+                String dateSqlite = sdf1.format(Calendar.getInstance().getTimeInMillis());
                 String time = sdfTime.format(Calendar.getInstance().getTimeInMillis());
+
+                FeedbackDetail feedbackDetail = new FeedbackDetail(0, feedbackId, msg, 0, userId, userName, "", dateSqlite, time, 1);
+                FeedbackDetail feedbackDetailDB = new FeedbackDetail(0, feedbackId, msg, 0, userId, userName, "", date, time, 1);
 
                 Log.e("Feedback DETAIL", " LAST ID : " + db.getFeedbackDetailLastId());
                 int lastId = db.getFeedbackDetailLastId() + 1;

@@ -240,19 +240,20 @@ public class ComplaintDetailActivity extends AppCompatActivity implements View.O
             if (msg.isEmpty()) {
             } else {
 
-                ComplaintDetail complaintDetail = new ComplaintDetail(0, complaintId, msg, "", "2018-1-1", "00:00:00", 0, userId, userName, 1);
-                ComplaintDetail complaintDetailDB = new ComplaintDetail(0, complaintId, msg, "", "2018-1-1", "00:00:00", 0, userId, userName, 1);
-
-
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
                 SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
                 String date = sdf.format(Calendar.getInstance().getTimeInMillis());
+                String dateDB = sdf1.format(Calendar.getInstance().getTimeInMillis());
                 String time = sdfTime.format(Calendar.getInstance().getTimeInMillis());
+
+                ComplaintDetail complaintDetail = new ComplaintDetail(0, complaintId, msg, "", date, time, 0, userId, userName, 1);
+                ComplaintDetail complaintDetailDB = new ComplaintDetail(0, complaintId, msg, "", dateDB, time, 0, userId, userName, 1);
+
+
 
                 Log.e("COMPLAINT DETAIL", " LAST ID : " + db.getComplaintDetailLastId());
                 int lastId = db.getComplaintDetailLastId() + 1;
-                complaintDetail.setTime(time);
-                complaintDetail.setDate(date);
                 complaintDetail.setCompDetailId(lastId);
 
                 db.addComplaintDetails(complaintDetail);

@@ -146,6 +146,7 @@ public class FeedbackDetailAdapter extends RecyclerView.Adapter<FeedbackDetailAd
 
         holder.tvOther.setText(feedback.getMessage());
         holder.tvOtherTime.setText(dispDate);
+        Log.e("FR--> "," ---> "+feedback.getMessage()+"      "+feedback.getFrName());
         holder.tvName.setText(feedback.getFrName());
 
     }

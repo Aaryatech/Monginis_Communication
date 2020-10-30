@@ -18,6 +18,7 @@ import com.ats.monginis_communication.constants.Constants;
 import com.ats.monginis_communication.db.DatabaseHandler;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -64,7 +65,17 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.MyVi
         final ComplaintData complaint = complaintList.get(position);
         holder.title.setText(complaint.getTitle());
         holder.desc.setText(complaint.getDescription());
-        holder.date.setText(complaint.getDate());
+
+        String time=complaint.getTime();
+        try{
+            SimpleDateFormat sdf=new SimpleDateFormat("hh:mm a");
+            SimpleDateFormat sdf1=new SimpleDateFormat("HH:mm:ss");
+
+            time=sdf.format(sdf1.parse(complaint.getTime()));
+
+        }catch (Exception e){}
+
+        holder.date.setText(complaint.getDate()+" "+time);
 
         db = new DatabaseHandler(context);
 

@@ -136,6 +136,7 @@ public class SuggestionDetailAdapter extends RecyclerView.Adapter<SuggestionDeta
         } catch (Exception e) {
         }
 
+        holder.tvName.setVisibility(View.VISIBLE);
 
         if (suggestion.getIsAdmin() == 0) {
             holder.llParent.setGravity(Gravity.RIGHT);
