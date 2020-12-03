@@ -97,6 +97,13 @@ public class SuggestionDetailActivity extends AppCompatActivity implements View.
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         SharedPreferences pref = getApplicationContext().getSharedPreferences(Constants.MY_PREF, MODE_PRIVATE);
         Gson gson = new Gson();
         String json2 = pref.getString("franchise", "");

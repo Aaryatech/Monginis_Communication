@@ -1,6 +1,7 @@
 package com.ats.monginis_communication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ats.monginis_communication.R;
+import com.ats.monginis_communication.activity.ImageZoomActivity;
 import com.ats.monginis_communication.bean.Message;
 import com.ats.monginis_communication.bean.SchedulerList;
 import com.ats.monginis_communication.constants.Constants;
@@ -75,6 +77,17 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
             Log.e("MESSAGE : ", "------------IMAGE : Exception : " + e.getMessage());
             e.printStackTrace();
         }
+
+        final String finalImage = image;
+        holder.ivImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ImageZoomActivity.class);
+                intent.putExtra("image", finalImage);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override

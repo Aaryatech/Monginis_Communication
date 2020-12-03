@@ -26,7 +26,16 @@ public class ImageZoomActivity extends AppCompatActivity {
             image = getIntent().getExtras().getString("image");
             Log.e("IMAGE PATH : ", " " + image);
 
-            Picasso.with(this).load(image).placeholder(ImageZoomActivity.this.getResources().getDrawable(R.drawable.logo)).resize(800,800).into(zoomageView);
+            //Picasso.with(this).load(image).placeholder(ImageZoomActivity.this.getResources().getDrawable(R.drawable.logo)).resize(800,800).into(zoomageView);
+
+            try {
+                Picasso.with(this)
+                        .load(image)
+                        .placeholder(R.drawable.logo)
+                        .error(R.drawable.logo)
+                        .into(zoomageView);
+            } catch (Exception e) {
+            }
 
         } catch (Exception e) {
         }

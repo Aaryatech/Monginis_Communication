@@ -23,7 +23,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".activity.ImageZoomActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:screenOrientation="portrait"/>
+            />
         <activity
             android:name=".activity.HomeActivity"
             android:screenOrientation="portrait" />
@@ -53,19 +53,16 @@
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".activity.SuggestionDetailActivity"
-            android:parentActivityName=".activity.InnerTabActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.ComplaintDetailActivity"
-            android:parentActivityName=".activity.InnerTabActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.FeedbackDetailActivity"
-            android:parentActivityName=".activity.InnerTabActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize" />

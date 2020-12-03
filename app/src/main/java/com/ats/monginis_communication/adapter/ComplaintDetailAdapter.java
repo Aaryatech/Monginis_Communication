@@ -132,7 +132,7 @@ public class ComplaintDetailAdapter extends RecyclerView.Adapter<ComplaintDetail
         } catch (Exception e) {
         }
 
-        holder.tvName.setVisibility(View.VISIBLE);
+        holder.tvName.setVisibility(View.GONE);
 
         if (complaint.getIsAdmin() == 0) {
             holder.llParent.setGravity(Gravity.RIGHT);

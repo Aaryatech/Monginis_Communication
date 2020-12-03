@@ -115,8 +115,8 @@ public class InnerTabActivity extends AppCompatActivity {
                     return new SuggestionFragment();
                 case 1:
                     return new ComplaintFragment();
-                case 2:
-                    return new LaunchProductFragment();
+                /*case 2:
+                    return new LaunchProductFragment();*/
                 default:
                     return null;
             }
@@ -124,7 +124,7 @@ public class InnerTabActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
 
         @Override
@@ -135,8 +135,8 @@ public class InnerTabActivity extends AppCompatActivity {
                     return ""+getResources().getString(R.string.suggestion);
                 case 1:
                     return ""+getResources().getString(R.string.complaint);
-                case 2:
-                    return "Feedback";
+                /*case 2:
+                    return "Feedback";*/
                 default:
                     return null;
             }

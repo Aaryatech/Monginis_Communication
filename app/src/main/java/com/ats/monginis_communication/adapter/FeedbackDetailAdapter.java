@@ -132,7 +132,7 @@ public class FeedbackDetailAdapter extends RecyclerView.Adapter<FeedbackDetailAd
         } catch (Exception e) {
         }
 
-        holder.tvName.setVisibility(View.VISIBLE);
+        holder.tvName.setVisibility(View.GONE);
 
         if (feedback.getFrId() == id) {
             holder.llParent.setGravity(Gravity.RIGHT);
